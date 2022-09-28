@@ -5,10 +5,17 @@ data class ItemData(
     val title: String,
     val price: Int,
     val vendor: Vendor,
-//    val category: Category,
+    val category: Category,
     val photoResId: Int,
     val isPhotoPortrait: Boolean = false
 )
+
+enum class Category {
+    All,
+    Accessories,
+    Clothing,
+    Home
+}
 
 enum class Vendor {
     Alphi,
@@ -23,7 +30,7 @@ val SampleItemsData = listOf(
         title = "Vagabond sack",
         price = 120,
         vendor = Vendor.Squiggle,
-//        category = Category.Accessories,
+        category = Category.Accessories,
         photoResId = R.drawable.photo_0
     ),
     ItemData(
@@ -31,7 +38,7 @@ val SampleItemsData = listOf(
         title = "Stella sunglasses",
         price = 58,
         vendor = Vendor.Mal,
-//        category = Category.Accessories,
+        category = Category.Accessories,
         photoResId = R.drawable.photo_1
     ),
     ItemData(
@@ -39,7 +46,7 @@ val SampleItemsData = listOf(
         title = "Whitney belt",
         price = 35,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Accessories,
+        category = Category.Accessories,
         photoResId = R.drawable.photo_2
     ),
     ItemData(
@@ -47,7 +54,7 @@ val SampleItemsData = listOf(
         title = "Garden stand",
         price = 98,
         vendor = Vendor.Alphi,
-//        category = Category.Accessories,
+        category = Category.Accessories,
         photoResId = R.drawable.photo_3
     ),
     ItemData(
@@ -55,7 +62,7 @@ val SampleItemsData = listOf(
         title = "Strut earrings",
         price = 34,
         vendor = Vendor.Six,
-//        category = Category.Accessories,
+        category = Category.Accessories,
         photoResId = R.drawable.photo_4
     ),
     ItemData(
@@ -63,7 +70,7 @@ val SampleItemsData = listOf(
         title = "Varsity socks",
         price = 12,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Accessories,
+        category = Category.Accessories,
         photoResId = R.drawable.photo_5
     ),
     ItemData(
@@ -71,7 +78,7 @@ val SampleItemsData = listOf(
         title = "Weave key ring",
         price = 16,
         vendor = Vendor.Six,
-//        category = Category.Accessories,
+        category = Category.Accessories,
         photoResId = R.drawable.photo_6
     ),
     ItemData(
@@ -79,7 +86,7 @@ val SampleItemsData = listOf(
         title = "Gatsby hat",
         price = 40,
         vendor = Vendor.Six,
-//        category = Category.Accessories,
+        category = Category.Accessories,
         photoResId = R.drawable.photo_7
     ),
     ItemData(
@@ -87,7 +94,7 @@ val SampleItemsData = listOf(
         title = "Shrug bag",
         price = 198,
         vendor = Vendor.Squiggle,
-//        category = Category.Accessories,
+        category = Category.Accessories,
         photoResId = R.drawable.photo_8
     ),
     ItemData(
@@ -95,7 +102,7 @@ val SampleItemsData = listOf(
         title = "Gilt desk trio",
         price = 58,
         vendor = Vendor.Alphi,
-//        category = Category.Home,
+        category = Category.Home,
         photoResId = R.drawable.photo_9
     ),
     ItemData(
@@ -103,7 +110,7 @@ val SampleItemsData = listOf(
         title = "Copper wire rack",
         price = 18,
         vendor = Vendor.Alphi,
-//        category = Category.Home,
+        category = Category.Home,
         photoResId = R.drawable.photo_10
     ),
     ItemData(
@@ -111,7 +118,7 @@ val SampleItemsData = listOf(
         title = "Soothe ceramic set",
         price = 28,
         vendor = Vendor.Mal,
-//        category = Category.Home,
+        category = Category.Home,
         photoResId = R.drawable.photo_11
     ),
     ItemData(
@@ -119,7 +126,7 @@ val SampleItemsData = listOf(
         title = "Hurrahs tea set",
         price = 34,
         vendor = Vendor.Six,
-//        category = Category.Home,
+        category = Category.Home,
         photoResId = R.drawable.photo_12
     ),
     ItemData(
@@ -127,7 +134,7 @@ val SampleItemsData = listOf(
         title = "Blue stone mug",
         price = 18,
         vendor = Vendor.Mal,
-//        category = Category.Home,
+        category = Category.Home,
         photoResId = R.drawable.photo_13
     ),
     ItemData(
@@ -135,7 +142,7 @@ val SampleItemsData = listOf(
         title = "Rainwater tray",
         price = 27,
         vendor = Vendor.Six,
-//        category = Category.Home,
+        category = Category.Home,
         photoResId = R.drawable.photo_14
     ),
     ItemData(
@@ -143,7 +150,7 @@ val SampleItemsData = listOf(
         title = "Chambray napkins",
         price = 16,
         vendor = Vendor.Six,
-//        category = Category.Home,
+        category = Category.Home,
         photoResId = R.drawable.photo_15
     ),
     ItemData(
@@ -151,7 +158,7 @@ val SampleItemsData = listOf(
         title = "Succulent planters",
         price = 16,
         vendor = Vendor.Alphi,
-//        category = Category.Home,
+        category = Category.Home,
         photoResId = R.drawable.photo_16
     ),
     ItemData(
@@ -159,7 +166,7 @@ val SampleItemsData = listOf(
         title = "Quartet table",
         price = 175,
         vendor = Vendor.Squiggle,
-//        category = Category.Home,
+        category = Category.Home,
         photoResId = R.drawable.photo_17
     ),
     ItemData(
@@ -167,7 +174,7 @@ val SampleItemsData = listOf(
         title = "Kitchen quattro",
         price = 129,
         vendor = Vendor.Alphi,
-//        category = Category.Home,
+        category = Category.Home,
         photoResId = R.drawable.photo_18
     ),
     ItemData(
@@ -175,7 +182,7 @@ val SampleItemsData = listOf(
         title = "Clay sweater",
         price = 48,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_19
     ),
     ItemData(
@@ -183,7 +190,7 @@ val SampleItemsData = listOf(
         title = "Sea tunic",
         price = 45,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_20
     ),
     ItemData(
@@ -191,7 +198,7 @@ val SampleItemsData = listOf(
         title = "Plaster tunic",
         price = 38,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_21,
         isPhotoPortrait = true
     ),
@@ -200,7 +207,7 @@ val SampleItemsData = listOf(
         title = "White pinstripe shirt",
         price = 70,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_22,
         isPhotoPortrait = true
     ),
@@ -209,7 +216,7 @@ val SampleItemsData = listOf(
         title = "Chambray shirt",
         price = 70,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_23
     ),
     ItemData(
@@ -217,7 +224,7 @@ val SampleItemsData = listOf(
         title = "Seabreeze sweater",
         price = 60,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_24,
         isPhotoPortrait = true
     ),
@@ -226,7 +233,7 @@ val SampleItemsData = listOf(
         title = "Gentry jacket",
         price = 178,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_25
     ),
     ItemData(
@@ -234,7 +241,7 @@ val SampleItemsData = listOf(
         title = "Navy trousers",
         price = 74,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_26,
         isPhotoPortrait = true
     ),
@@ -243,7 +250,7 @@ val SampleItemsData = listOf(
         title = "Walter henley white",
         price = 38,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_27,
         isPhotoPortrait = true
     ),
@@ -252,7 +259,7 @@ val SampleItemsData = listOf(
         title = "Surf and perf shirt",
         price = 48,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_28
     ),
     ItemData(
@@ -260,7 +267,7 @@ val SampleItemsData = listOf(
         title = "Ginger scarf",
         price = 98,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_29,
     ),
     ItemData(
@@ -268,7 +275,7 @@ val SampleItemsData = listOf(
         title = "Ramona crossover",
         price = 68,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_30,
         isPhotoPortrait = true
     ),
@@ -277,7 +284,7 @@ val SampleItemsData = listOf(
         title = "Chambray shirt",
         price = 38,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_31
     ),
     ItemData(
@@ -285,7 +292,7 @@ val SampleItemsData = listOf(
         title = "Class white collar",
         price = 58,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_32,
         isPhotoPortrait = true
     ),
@@ -294,7 +301,7 @@ val SampleItemsData = listOf(
         title = "Cerise scallop tee",
         price = 42,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_33
     ),
     ItemData(
@@ -302,7 +309,7 @@ val SampleItemsData = listOf(
         title = "Shoulder rolls tee",
         price = 27,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_34,
         isPhotoPortrait = true
     ),
@@ -311,7 +318,7 @@ val SampleItemsData = listOf(
         title = "Grey slouch tank",
         price = 24,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_35,
         isPhotoPortrait = true
     ),
@@ -320,7 +327,7 @@ val SampleItemsData = listOf(
         title = "Sunshirt dress",
         price = 58,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_36,
         isPhotoPortrait = true
     ),
@@ -329,7 +336,7 @@ val SampleItemsData = listOf(
         title = "Fine lines tee",
         price = 58,
         vendor = Vendor.Lmbrjk,
-//        category = Category.Clothing,
+        category = Category.Clothing,
         photoResId = R.drawable.photo_37,
         isPhotoPortrait = true
     ),
