@@ -26,6 +26,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.shrine.ui.theme.ShrineScrimColor
 import com.example.shrine.ui.theme.ShrineTheme
 import kotlinx.coroutines.launch
 
@@ -291,35 +292,41 @@ private fun NavigationMenu(
         verticalArrangement = Arrangement.spacedBy(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
-        Category.values().forEachIndexed { _, category ->
-            MenuItem(
-                modifier = Modifier.clickable {
-                    onMenuSelect(category)
-                }
-            ) {
-                MenuText(
-                    text = category.toString(),
-                    activeDecoration = {
-                        if (category == activeCategory) {
-                            Image(
-                                painter = painterResource(id = R.drawable.ic_tab_indicator),
-                                contentDescription = null
-                            )
+        AnimatedVisibility(visible = backdropRevealed) {
+            Column {
+                Category.values().forEachIndexed { _, category ->
+                    MenuItem(
+                        modifier = Modifier.clickable {
+                            onMenuSelect(category)
                         }
+                    ) {
+                        MenuText(
+                            text = category.toString(),
+                            activeDecoration = {
+                                if (category == activeCategory) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.ic_tab_indicator),
+                                        contentDescription = null
+                                    )
+                                }
+                            }
+                        )
                     }
-                )
+                }
+                MenuItem() {
+                    Divider(
+                        modifier = Modifier
+                            .width(56.dp)
+                            .padding(vertical = 12.dp),
+                        color = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.disabled)
+                    )
+                }
+                MenuItem() {
+                    MenuText("Logout")
+                }
             }
         }
-        Divider(
-            modifier = Modifier.width(56.dp), color = MaterialTheme.colors.onBackground
-        )
-        Text(text = "log out".uppercase(),
-            style = MaterialTheme.typography.subtitle1,
-            modifier = Modifier.clickable {
-//                onClick(index)
-            }
-        )
+
     }
 }
 
@@ -328,7 +335,7 @@ private fun NavigationMenu(
 fun NavigationMenuReview() {
     ShrineTheme {
         Surface(
-            color = MaterialTheme.colors.secondary
+            color = MaterialTheme.colors.background
         ) {
             var activeCategory by remember { mutableStateOf(Category.All) }
             NavigationMenu(
@@ -346,10 +353,9 @@ fun NavigationMenuReview() {
 fun Backdrop(
     onBackdropReveal: (Boolean) -> Unit = {}
 ) {
-    val scaffoldState = rememberBackdropScaffoldState(BackdropValue.Concealed)
+    val scaffoldState = rememberBackdropScaffoldState(BackdropValue.Revealed) //change
     var backdropRevealed by rememberSaveable { mutableStateOf(scaffoldState.isRevealed) }
     val scope = rememberCoroutineScope()
-    var menuSelection by remember { mutableStateOf(0) }
     var activeCategory by rememberSaveable { mutableStateOf(Category.All) }
     BackdropScaffold(
         scaffoldState = scaffoldState,
@@ -377,6 +383,9 @@ fun Backdrop(
 //            }
 
         },
+        frontLayerShape = MaterialTheme.shapes.large,
+        frontLayerElevation = 16.dp,
+        frontLayerScrimColor = ShrineScrimColor.copy(alpha = 0.6f),
         backLayerContent = {
             NavigationMenu(
                 modifier = Modifier.padding(top = 12.dp, bottom = 32.dp),
