@@ -20,78 +20,16 @@ import com.example.shrine.ui.theme.ShrineTheme
 @Composable
 fun Cart() {
     Surface(
-        color = MaterialTheme.colors.background,
+        color = MaterialTheme.colors.secondary,
         ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(
-                        imageVector = Icons.Default.KeyboardArrowDown,
-                        contentDescription = "down arrow "
-                    )
-                }
-                Spacer(modifier = Modifier.width(4.dp))
-                Text(text = "Cart".uppercase())
-                Spacer(modifier = Modifier.width(12.dp))
-                Text(text = "${SampleItemsData.size}".uppercase())
-            }
+            CartHeader()
             SampleItemsData.forEach{ item->
-                Row(
-                    Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    IconButton(
-                        onClick = { },
-                        Modifier.padding(horizontal = 4.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.RemoveCircleOutline,
-                            contentDescription = "Remove item icon"
-                        )
-                    }
-                    Column(
-                        Modifier.fillMaxWidth()
-                    ) {
-                        Divider(color = MaterialTheme.colors.onSecondary.copy(alpha = 0.3f))
-                        Row(
-                            Modifier.padding(vertical = 20.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Image(
-                                painter = painterResource(id = item.photoResId),
-                                contentDescription = null
-                            )
-                            Spacer(Modifier.width(20.dp))
-                            Column(
-                                Modifier.padding(end = 16.dp)
-                            ) {
-                                Row(
-                                    Modifier.fillMaxWidth(),
-                                    horizontalArrangement = Arrangement.SpaceBetween
-                                ) {
-                                    Text(
-                                        text = "${item.vendor}".uppercase(),
-                                        style = MaterialTheme.typography.body2,
-                                    )
-                                    Text(
-                                        text = "${item.price}".uppercase(),
-                                        style = MaterialTheme.typography.body2,
-                                    )
-                                }
-                                Text(
-                                    text = item.title.uppercase(),
-                                    style = MaterialTheme.typography.subtitle2,
-                                )
-                            }
-                        }
-                    }
-                }
+                CartItem(item)
             }
 
             Button(
@@ -106,6 +44,79 @@ fun Cart() {
     }
 
 }
+
+@Composable
+private fun CartHeader() {
+    Row(
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        IconButton(onClick = { }) {
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowDown,
+                contentDescription = "down arrow "
+            )
+        }
+        Spacer(modifier = Modifier.width(4.dp))
+        Text(text = "Cart".uppercase())
+        Spacer(modifier = Modifier.width(12.dp))
+        Text(text = "${SampleItemsData.size}".uppercase())
+    }
+}
+
+@Composable
+private fun CartItem(item: ItemData) {
+    Row(
+        Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        IconButton(
+            onClick = { },
+            Modifier.padding(horizontal = 4.dp)
+        ) {
+            Icon(
+                imageVector = Icons.Default.RemoveCircleOutline,
+                contentDescription = "Remove item icon"
+            )
+        }
+        Column(
+            Modifier.fillMaxWidth()
+        ) {
+            Divider(color = MaterialTheme.colors.onSecondary.copy(alpha = 0.3f))
+            Row(
+                Modifier.padding(vertical = 20.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Image(
+                    painter = painterResource(id = item.photoResId),
+                    contentDescription = null
+                )
+                Spacer(Modifier.width(20.dp))
+                Column(
+                    Modifier.padding(end = 16.dp)
+                ) {
+                    Row(
+                        Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(
+                            text = "${item.vendor}".uppercase(),
+                            style = MaterialTheme.typography.body2,
+                        )
+                        Text(
+                            text = "${item.price}".uppercase(),
+                            style = MaterialTheme.typography.body2,
+                        )
+                    }
+                    Text(
+                        text = item.title.uppercase(),
+                        style = MaterialTheme.typography.subtitle2,
+                    )
+                }
+            }
+        }
+    }
+}
+
 
 @Preview(showBackground = true)
 @Composable
