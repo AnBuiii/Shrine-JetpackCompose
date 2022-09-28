@@ -365,13 +365,13 @@ fun Backdrop(
                 onBackdropReveal = {
                     backdropRevealed = it
                     onBackdropReveal(it)
-//                    scope.launch {
-//                        if (scaffoldState.isConcealed) {
-//                            scaffoldState.reveal()
-//                        } else {
-//                            scaffoldState.conceal()
-//                        }
-//                    }
+                    scope.launch {
+                        if (scaffoldState.isConcealed) {
+                            scaffoldState.reveal()
+                        } else {
+                            scaffoldState.conceal()
+                        }
+                    }
                 }
             )
         },
