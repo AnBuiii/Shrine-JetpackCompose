@@ -19,7 +19,7 @@ fun ShrineTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colors = ShrineLightColorPalette,
         typography = ShrineTypography,
-        shapes = ShrineShapes,
+        shapes = Shapes,
         content = content
     )
 }
