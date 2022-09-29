@@ -1,4 +1,6 @@
-package com.example.shrine
+package com.example.shrine.data
+
+import com.example.shrine.R
 
 data class ItemData(
     val id: Int,
@@ -24,6 +26,7 @@ enum class Vendor {
     Six,
     Squiggle,
 }
+
 val SampleItemsData = listOf(
     ItemData(
         id = 0,
