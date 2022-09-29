@@ -15,20 +15,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.shrine.data.ItemData
+import com.example.shrine.data.SampleItemsData
 import com.example.shrine.ui.theme.ShrineTheme
 
 @Composable
 fun Cart() {
     Surface(
         color = MaterialTheme.colors.secondary,
-        ) {
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
             CartHeader()
-            SampleItemsData.forEach{ item->
+            SampleItemsData.forEach { item ->
                 CartItem(item)
             }
 
