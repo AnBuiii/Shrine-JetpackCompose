@@ -1,6 +1,7 @@
 package com.example.shrine.ui.backdrop
 
 import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
@@ -56,6 +57,7 @@ fun Backdrop(
         frontLayerShape = MaterialTheme.shapes.large,
         frontLayerElevation = 16.dp,
         frontLayerScrimColor = ShrineScrimColor.copy(alpha = 0.6f),
+
         backLayerContent = {
             NavigationMenu(
                 modifier = Modifier.padding(top = 12.dp, bottom = 32.dp),

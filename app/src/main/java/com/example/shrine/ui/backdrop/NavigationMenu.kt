@@ -86,38 +86,6 @@ internal fun NavigationMenu(
         verticalArrangement = Arrangement.spacedBy(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        /* Column {
-             Category.values().forEach {category ->
-                 MenuItem(
-                     modifier = Modifier.clickable {
-                         onMenuSelect(category)
-                     }
-                 ) {
-                     MenuText(
-                         text = category.toString(),
-                         activeDecoration = {
-                             if (category == activeCategory) {
-                                 Image(
-                                     painter = painterResource(id = R.drawable.ic_tab_indicator),
-                                     contentDescription = null
-                                 )
-                             }
-                         }
-                     )
-                 }
-             }
-             MenuItem() {
-                 Divider(
-                     modifier = Modifier
-                         .width(56.dp)
-                         .padding(vertical = 12.dp),
-                     color = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.disabled)
-                 )
-             }
-             MenuItem() {
-                 MenuText("Logout")
-             }
-         }*/
         AnimatedVisibility(
             visible = backdropRevealed,
             enter = EnterTransition.None,
