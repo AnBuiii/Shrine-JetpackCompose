@@ -1,4 +1,4 @@
-package com.example.shrine.ui.backdrop
+package com.example.shrine.backdrop
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.LinearEasing
@@ -27,7 +27,8 @@ import com.example.shrine.ui.theme.ShrineTheme
 
 @Composable
 private fun TopAppBarText(
-    modifier: Modifier = Modifier, text: String
+    modifier: Modifier = Modifier,
+    text: String
 ) {
     Text(
         modifier = modifier,
@@ -74,7 +75,8 @@ private fun MenuSearchField() {
 @ExperimentalAnimationApi
 @Composable
 internal fun ShrineTopAppBar(
-    backdropRevealed: Boolean, onBackdropReveal: (Boolean) -> Unit = {}
+    backdropRevealed: Boolean,
+    onBackdropReveal: (Boolean) -> Unit = {}
 ) {
     TopAppBar(title = {
         val density = LocalDensity.current

@@ -1,4 +1,4 @@
-package com.example.shrine.ui.backdrop
+package com.example.shrine.backdrop
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.LinearEasing
@@ -37,7 +37,7 @@ private fun MenuText(
 
 @ExperimentalAnimationApi
 @Composable
-private fun AnimatedVisibilityScope.MenuItem(
+    private fun AnimatedVisibilityScope.MenuItem(
     modifier: Modifier = Modifier,
     index: Int,
     content: @Composable () -> Unit,

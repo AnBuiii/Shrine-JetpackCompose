@@ -12,7 +12,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.shrine.data.SampleItemsData
-import com.example.shrine.ui.backdrop.Backdrop
+import com.example.shrine.backdrop.Backdrop
+import com.example.shrine.cart.CartBottomSheetState
+import com.example.shrine.cart.CartExpandingBottomSheet
 import com.example.shrine.ui.theme.ShrineTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +22,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ShrineTheme {
-                ExpandedCart()
             }
         }
     }

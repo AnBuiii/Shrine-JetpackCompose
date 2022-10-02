@@ -1,4 +1,4 @@
-package com.example.shrine.ui.backdrop
+package com.example.shrine.backdrop
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -28,6 +28,7 @@ fun Backdrop(
     var activeCategory by rememberSaveable { mutableStateOf(Category.All) }
     BackdropScaffold(
         scaffoldState = scaffoldState,
+        gesturesEnabled = false,
         appBar = {
             ShrineTopAppBar(
                 backdropRevealed = backdropRevealed,
