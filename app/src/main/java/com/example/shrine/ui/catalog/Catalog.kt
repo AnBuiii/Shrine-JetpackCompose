@@ -1,4 +1,4 @@
-package com.example.shrine.catalog
+package com.example.shrine.ui.catalog
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow

@@ -1,4 +1,4 @@
-package com.example.shrine.backdrop
+package com.example.shrine.ui.backdrop
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.LinearEasing

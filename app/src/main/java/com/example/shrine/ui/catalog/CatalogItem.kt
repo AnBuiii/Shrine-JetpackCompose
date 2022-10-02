@@ -1,4 +1,4 @@
-package com.example.shrine.catalog
+package com.example.shrine.ui.catalog
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
