@@ -17,16 +17,17 @@ import com.example.shrine.utils.transformToWeavedList
 @Composable
 fun Catalog(
     modifier: Modifier = Modifier,
-    items: List<ItemData> = SampleItemsData
+    items: List<ItemData> = SampleItemsData,
+    onAddCartItem : (ItemData)-> Unit = {}
 ) {
     val screenWidth = LocalConfiguration.current.screenWidthDp
     LazyRow(
         modifier = modifier.fillMaxSize(),
         contentPadding = PaddingValues(32.dp)
     ) {
-
+        if(items.isEmpty()) return@LazyRow
         itemsIndexed(
-            items = transformToWeavedList(items.take(items.size-1)),
+            items = transformToWeavedList(items.take(items.size)),
             key = { _, item -> item[0].id }
         ) { idx, item ->
             val even = idx % 2 == 0
@@ -46,6 +47,7 @@ fun Catalog(
                                 .weight(1f)
                                 .fillMaxWidth(0.85f),
                             data = item[1],
+                            onAdd = onAddCartItem
                         )
                         Spacer(Modifier.height(40.dp))
                         CatalogItem(
@@ -53,6 +55,7 @@ fun Catalog(
                                 .weight(1f)
                                 .fillMaxWidth(0.85f),
                             data = item[0],
+                            onAdd = onAddCartItem
                         )
                     } else {
                         CatalogItem(
@@ -60,6 +63,7 @@ fun Catalog(
                                 .fillMaxWidth(0.85f)
                                 .fillMaxHeight(0.5f),
                             data = item[0],
+                            onAdd = onAddCartItem
                         )
                     }
                 } else {
@@ -69,6 +73,7 @@ fun Catalog(
                             .fillMaxWidth(0.8f)
                             .fillMaxHeight(0.85f),
                         data = item[0],
+                        onAdd = onAddCartItem
                     )
                 }
             }

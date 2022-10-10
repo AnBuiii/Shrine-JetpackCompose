@@ -1,5 +1,6 @@
 package com.example.shrine
 
+import android.content.ClipData.Item
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.shrine.data.ItemData
 import com.example.shrine.data.SampleItemsData
 import com.example.shrine.ui.backdrop.Backdrop
 import com.example.shrine.ui.cart.CartBottomSheetState
@@ -38,12 +40,20 @@ fun DefaultPreview() {
             modifier = Modifier.fillMaxSize()
         ) {
             var sheetState by remember { mutableStateOf(CartBottomSheetState.Collapsed) }
-            Backdrop { revealed ->
-                sheetState =
-                    if (revealed) CartBottomSheetState.Hidden else CartBottomSheetState.Collapsed
+            val cartItems = remember {
+                mutableStateListOf(*listOf<ItemData>().toTypedArray())
             }
+            Backdrop(
+                onBackdropReveal = { revealed ->
+                    sheetState =
+                        if (revealed) CartBottomSheetState.Hidden else CartBottomSheetState.Collapsed
+                },
+                onAddCartItem = {
+                    cartItems.add(it)
+                }
+            )
             CartExpandingBottomSheet(
-                items = SampleItemsData,
+                items = cartItems,
                 maxHeight = maxHeight,
                 maxWidth = minWidth,
                 modifier = Modifier.align(Alignment.BottomEnd),

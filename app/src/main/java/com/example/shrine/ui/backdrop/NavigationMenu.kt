@@ -75,7 +75,7 @@ private fun MenuText(
 internal fun NavigationMenu(
     modifier: Modifier = Modifier,
     backdropRevealed: Boolean = true,
-    activeCategory: Category = Category.All,
+    activeCategory: Category = Category.Feature,
     onMenuSelect: (Category) -> Unit = {}
 ) {
     Column(
@@ -138,7 +138,7 @@ private fun NavigationMenuReview() {
         Surface(
             color = MaterialTheme.colors.background
         ) {
-            var activeCategory by remember { mutableStateOf(Category.All) }
+            var activeCategory by remember { mutableStateOf(Category.Feature) }
             NavigationMenu(
                 modifier = Modifier.padding(vertical = 8.dp),
                 activeCategory = activeCategory,

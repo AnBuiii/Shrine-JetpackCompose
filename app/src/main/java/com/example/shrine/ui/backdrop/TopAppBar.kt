@@ -185,12 +185,27 @@ internal fun ShrineTopAppBar(
             else MenuSearchField()
         }
     }, actions = {
-        Icon(
-            imageVector = Icons.Default.Search,
-            contentDescription = "Search action",
-            tint = LocalContentColor.current.copy(alpha = ContentAlpha.high),
-            modifier = Modifier.padding(end = 12.dp)
-        )
+        AnimatedVisibility(
+            visible = backdropRevealed,
+            enter = fadeIn(
+                animationSpec = tween(
+                    durationMillis = 180, delayMillis = 90, easing = LinearEasing
+                )
+            ),
+            exit = fadeOut(
+                animationSpec = tween(
+                    durationMillis = 180, delayMillis = 90, easing = LinearEasing
+                )
+            )
+        ) {
+            Icon(
+                imageVector = Icons.Default.Search,
+                contentDescription = "Search action",
+                tint = LocalContentColor.current.copy(alpha = ContentAlpha.high),
+                modifier = Modifier.padding(end = 12.dp)
+            )
+        }
+
     }, elevation = 0.dp
     )
 }

@@ -1,6 +1,7 @@
 package com.example.shrine.ui.catalog
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -11,6 +12,7 @@ import androidx.compose.material.icons.outlined.AddShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -23,7 +25,8 @@ import com.example.shrine.utils.getVendorResId
 @Composable
 fun CatalogItem(
     modifier: Modifier = Modifier,
-    data: ItemData
+    data: ItemData,
+    onAdd: (ItemData) -> Unit = {}
 ) {
     Column(
         modifier = modifier,
@@ -39,7 +42,12 @@ fun CatalogItem(
                 contentScale = ContentScale.Crop
             )
             Icon(
-                modifier = Modifier.padding(12.dp),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .clip(RoundedCornerShape(12.dp))
+                    .clickable {
+                        onAdd(data)
+                    },
                 imageVector = Icons.Outlined.AddShoppingCart,
                 contentDescription = "Add to cart",
             )
@@ -56,12 +64,16 @@ fun CatalogItem(
         }
         Spacer(modifier = Modifier.height(20.dp))
         Text(text = data.title, style = MaterialTheme.typography.subtitle2)
-        Text(text = "$${data.price}", style = MaterialTheme.typography.body2, modifier = Modifier.padding(vertical = 12.dp))
+        Text(
+            text = "$${data.price}",
+            style = MaterialTheme.typography.body2,
+            modifier = Modifier.padding(vertical = 12.dp)
+        )
 
     }
 }
 
-@Preview()
+@Preview
 @Composable
 fun CatalogItemPreview() {
     MaterialTheme {

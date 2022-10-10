@@ -43,6 +43,7 @@ fun CartExpandingBottomSheet(
     maxWidth: Dp,
     onStateChange: (CartBottomSheetState) -> Unit = {}
 ) {
+    val collapsedCartItems = items.distinct()
     val cartTransition = updateTransition(
         targetState = sheetState,
         label = "Cart Transition"
@@ -65,9 +66,9 @@ fun CartExpandingBottomSheet(
             CartBottomSheetState.Expanded -> maxWidth
             CartBottomSheetState.Hidden -> 0.dp
             else -> {
-                val size = min(3, items.size)
+                val size = min(3, collapsedCartItems.size)
                 var width = 24 + 40 * (size + 1) + 16 * size + 16
-                if (items.size > 3) width += 32 + 16
+                if (collapsedCartItems.size > 3) width += 32 + 16
                 width.dp
             }
         }
@@ -148,14 +149,14 @@ fun CartExpandingBottomSheet(
         ) { targetState ->
             if (targetState == CartBottomSheetState.Expanded) {
                 ExpandedCart(
-                    items = items.take(6),
+                    items = items,
                     onCollapse = {
                         onStateChange(CartBottomSheetState.Collapsed)
                     }
                 )
             } else {
                 CollapsedCart(
-                    items = items.take(6),
+                    items = collapsedCartItems,
                     onTap = {
                         onStateChange(CartBottomSheetState.Expanded)
                     }

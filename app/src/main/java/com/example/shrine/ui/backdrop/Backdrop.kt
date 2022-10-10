@@ -1,16 +1,21 @@
 package com.example.shrine.ui.backdrop
 
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Tune
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.shrine.ui.catalog.Catalog
 import com.example.shrine.data.Category
+import com.example.shrine.data.ItemData
 import com.example.shrine.data.SampleItemsData
+import com.example.shrine.ui.catalog.Catalog
 import com.example.shrine.ui.theme.ShrineScrimColor
 import com.example.shrine.ui.theme.ShrineTheme
 import kotlinx.coroutines.launch
@@ -20,12 +25,14 @@ import kotlinx.coroutines.launch
 @ExperimentalMaterialApi
 @Composable
 fun Backdrop(
-    onBackdropReveal: (Boolean) -> Unit = {}
+    onBackdropReveal: (Boolean) -> Unit = {},
+    onAddCartItem: (ItemData) -> Unit = {}
 ) {
     val scaffoldState = rememberBackdropScaffoldState(BackdropValue.Concealed)
     var backdropRevealed by rememberSaveable { mutableStateOf(scaffoldState.isRevealed) }
     val scope = rememberCoroutineScope()
-    var activeCategory by rememberSaveable { mutableStateOf(Category.All) }
+    var activeCategory by rememberSaveable { mutableStateOf(Category.Feature) }
+    val verticalScroll by remember { mutableStateOf(true) }
     BackdropScaffold(
         scaffoldState = scaffoldState,
         gesturesEnabled = false,
@@ -48,11 +55,20 @@ fun Backdrop(
             )
         },
         frontLayerContent = {
-            Catalog(items = SampleItemsData)
-//            Box(modifier = Modifier.fillMaxSize()) {
-//
-//            }
-
+            Box {
+                Catalog(
+                    items = SampleItemsData.filter {
+                        activeCategory == Category.Feature || it.category == activeCategory
+                    },
+                    onAddCartItem = { onAddCartItem(it) }
+                )
+                IconButton(
+                    onClick = { },
+                    modifier = Modifier.align(Alignment.TopEnd)
+                ) {
+                    Icon(imageVector = Icons.Default.Tune, contentDescription = "Change grid")
+                }
+            }
         },
         frontLayerShape = MaterialTheme.shapes.large,
         frontLayerElevation = 16.dp,
